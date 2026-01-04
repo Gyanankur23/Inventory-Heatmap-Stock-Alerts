@@ -5,31 +5,29 @@
   <title>Inventory Heatmap Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
-    header { text-align: center; margin-bottom: 30px; }
-    h1 { color: #333; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #eee; }
-    .alerts-section li { color: red; margin-bottom: 5px; }
-    .diagram-img { width: 100%; max-width: 600px; margin-bottom: 20px; }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Inventory Heatmap & Stock-Out Alerts</h1>
+    <div class="header-container">
+      <h1>Inventory Boss Dashboard</h1>
+      <nav>
+        <button class="nav-btn" data-target="heatmap-section">Heatmap</button>
+        <button class="nav-btn" data-target="inventory-section">Inventory</button>
+        <button class="nav-btn" data-target="alerts-section">Alerts</button>
+        <button class="nav-btn" data-target="diagrams-section">Diagrams</button>
+      </nav>
+    </div>
   </header>
 
   <main>
     <!-- Heatmap -->
-    <section class="heatmap">
+    <section class="page-section" id="heatmap-section">
       <h2>Stock Level Heatmap</h2>
-      <img src="diagrams/heatmap.jpg" alt="Heatmap" id="heatmap-image">
+      <img src="diagrams/heatmap.jpg" alt="Heatmap" class="diagram-img">
     </section>
 
     <!-- Inventory Table -->
-    <section class="table-section">
+    <section class="page-section" id="inventory-section">
       <h2>Inventory Forecast</h2>
       <table id="inventory-table">
         <thead>
@@ -45,18 +43,24 @@
     </section>
 
     <!-- Alerts -->
-    <section class="alerts-section">
+    <section class="page-section" id="alerts-section">
       <h2>Stock-Out Alerts</h2>
-      <ul id="alerts-list"></ul>
+      <ul id="alerts-list" class="alerts-list"></ul>
     </section>
 
     <!-- Diagrams Section -->
-    <section class="diagrams-section">
+    <section class="page-section" id="diagrams-section">
       <h2>System Diagrams</h2>
-      <h3>Architecture</h3>
-      <img src="diagrams/architecture.jpg" alt="Architecture Diagram" class="diagram-img">
-      <h3>Process Flow</h3>
-      <img src="diagrams/process_flow.jpg" alt="Process Flow Diagram" class="diagram-img">
+      <div class="diagram-grid">
+        <div>
+          <h3>Architecture</h3>
+          <img src="diagrams/architecture.jpg" alt="Architecture Diagram" class="diagram-img">
+        </div>
+        <div>
+          <h3>Process Flow</h3>
+          <img src="diagrams/process_flow.jpg" alt="Process Flow Diagram" class="diagram-img">
+        </div>
+      </div>
     </section>
   </main>
 

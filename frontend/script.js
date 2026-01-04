@@ -1,13 +1,11 @@
-// script.js
-
-// Your live Render backend URL
+// Your Render backend URL
 const API_BASE = "https://inventory-heatmap-stock-alerts.onrender.com";
 
-// Fetch inventory from backend and populate table
+// Fetch inventory from backend
 fetch(`${API_BASE}/inventory`)
   .then(res => res.json())
   .then(data => {
-    const inventory = data.data; // matches backend JSON
+    const inventory = data.data;
     const tableBody = document.querySelector("#inventory-table tbody");
 
     inventory.forEach(row => {
@@ -21,7 +19,7 @@ fetch(`${API_BASE}/inventory`)
       tableBody.appendChild(tr);
     });
 
-    // Populate stock-out alerts
+    // Populate alerts
     const alertsList = document.getElementById("alerts-list");
     inventory.forEach(row => {
       if (row.days_until_out_of_stock <= 5) {
@@ -32,3 +30,18 @@ fetch(`${API_BASE}/inventory`)
     });
   })
   .catch(err => console.error("Error fetching inventory:", err));
+
+// Navigation between sections
+const navButtons = document.querySelectorAll(".nav-btn");
+const sections = document.querySelectorAll(".page-section");
+
+navButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-target");
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(target).classList.add("active");
+  });
+});
+
+// Activate first section by default
+document.getElementById("heatmap-section").classList.add("active");

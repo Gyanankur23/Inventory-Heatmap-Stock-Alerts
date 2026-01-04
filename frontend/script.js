@@ -1,30 +1,34 @@
-// Sample data (matching backend mock)
-const inventoryData = [
-  { item: "Paracetamol", location: "Clinic A", stock: 35, days_left: 4 },
-  { item: "Rice", location: "Warehouse 1", stock: 120, days_left: 10 },
-  { item: "Oxygen Cylinder", location: "Hospital B", stock: 5, days_left: 2 },
-  { item: "Milk", location: "Store C", stock: 50, days_left: 7 },
-];
+// script.js
 
-// Populate inventory table
-const tableBody = document.querySelector("#inventory-table tbody");
-inventoryData.forEach(row => {
-  const tr = document.createElement("tr");
-  tr.innerHTML = `
-    <td>${row.item}</td>
-    <td>${row.location}</td>
-    <td>${row.stock}</td>
-    <td>${row.days_left}</td>
-  `;
-  tableBody.appendChild(tr);
-});
+// Your live Render backend URL
+const API_BASE = "https://inventory-heatmap-stock-alerts.onrender.com";
 
-// Populate alerts
-const alertsList = document.getElementById("alerts-list");
-inventoryData.forEach(row => {
-  if(row.days_left <= 5){
-    const li = document.createElement("li");
-    li.textContent = `⚠️ ${row.item} at ${row.location} running low (${row.days_left} days left)`;
-    alertsList.appendChild(li);
-  }
-});
+// Fetch inventory from backend and populate table
+fetch(`${API_BASE}/inventory`)
+  .then(res => res.json())
+  .then(data => {
+    const inventory = data.data; // matches backend JSON
+    const tableBody = document.querySelector("#inventory-table tbody");
+
+    inventory.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${row.item}</td>
+        <td>${row.location}</td>
+        <td>${row.stock}</td>
+        <td>${row.days_until_out_of_stock}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
+
+    // Populate stock-out alerts
+    const alertsList = document.getElementById("alerts-list");
+    inventory.forEach(row => {
+      if (row.days_until_out_of_stock <= 5) {
+        const li = document.createElement("li");
+        li.textContent = `⚠️ ${row.item} at ${row.location} running low (${row.days_until_out_of_stock} days left)`;
+        alertsList.appendChild(li);
+      }
+    });
+  })
+  .catch(err => console.error("Error fetching inventory:", err));

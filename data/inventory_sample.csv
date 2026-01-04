@@ -1,0 +1,11 @@
+item,location,stock,days_until_out_of_stock
+Paracetamol,Clinic A,35,4
+Rice,Warehouse 1,120,10
+Oxygen Cylinder,Hospital B,5,2
+Milk,Store C,50,7
+Bread,Store D,30,5
+Sugar,Warehouse 2,80,12
+Water Bottles,Clinic B,25,3
+Soap,Store E,60,8
+Hand Sanitizer,Clinic C,10,2
+Eggs,Store F,40,6

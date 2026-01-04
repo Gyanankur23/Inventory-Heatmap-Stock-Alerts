@@ -5,6 +5,16 @@
   <title>Inventory Heatmap Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+    header { text-align: center; margin-bottom: 30px; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #eee; }
+    .alerts-section li { color: red; margin-bottom: 5px; }
+    .diagram-img { width: 100%; max-width: 600px; margin-bottom: 20px; }
+  </style>
 </head>
 <body>
   <header>
@@ -30,18 +40,14 @@
             <th>Days Until Out of Stock</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Populated by script.js -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </section>
 
     <!-- Alerts -->
     <section class="alerts-section">
       <h2>Stock-Out Alerts</h2>
-      <ul id="alerts-list">
-        <!-- Populated by script.js -->
-      </ul>
+      <ul id="alerts-list"></ul>
     </section>
 
     <!-- Diagrams Section -->
@@ -52,7 +58,6 @@
       <h3>Process Flow</h3>
       <img src="../diagrams/process_flow.jpg" alt="Process Flow Diagram" class="diagram-img">
     </section>
-
   </main>
 
   <script src="script.js"></script>

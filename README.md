@@ -1,6 +1,6 @@
 # Inventory Heatmap & Stock-Out Alerts
 
-**AI-Powered Platform for Predicting and Preventing Stock-Outs of Essential Goods**
+**AI-Powered Platform for Predicting and Preventing Stock-Outs of Essential Goods**.
 
 ---
 
